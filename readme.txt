@@ -1,8 +1,8 @@
 === Email OTP Verification for Contact Form 7 ===
 Contributors: asifrahaman
 Tags: contact form 7, otp, email verification, spam protection, smtp
-Requires at least: 5.0
-Tested up to: 6.5
+Requires at least: 5.2
+Tested up to: 6.9
 Stable tag: 1.0.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html

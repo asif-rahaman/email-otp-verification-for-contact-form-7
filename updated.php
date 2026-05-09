@@ -13,7 +13,7 @@
  * Text Domain: email-otp-verification-for-contact-form-7
  * Domain Path: /languages
  * Requires at least: 5.2
- * Tested up to: 6.9
+ * Tested up to: 6.
  * Requires Plugins:  contact-form-7
  */
 

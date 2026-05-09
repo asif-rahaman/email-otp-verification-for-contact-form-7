@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name: Email OTP Verification for Contact Form 7
- * Plugin URI:  https://github.com/asifrahaman/email-otp-verification-for-contact-form-7
+ * Plugin URI:  https://github.com/asif-rahaman/email-otp-verification-for-contact-form-7
  * Description: Adds OTP email verification to Contact Form 7 using the site's default SMTP. No third-party APIs required.
  * Version:     1.0.0
  * Requires at least: 5.2

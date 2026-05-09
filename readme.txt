@@ -31,8 +31,8 @@ This plugin is built with a **"Your Server, Your Rules"** philosophy. It sends O
 1. Upload the `email-otp-verification-for-contact-form-7` folder to the `/wp-content/plugins/` directory.
 2. Activate the plugin through the 'Plugins' menu in WordPress.
 3. Edit your Contact Form 7 form.
-4. Add the OTP field: `[text* email-otp placeholder "Enter OTP"]`
-5. Add the "Send" button: `<button type="button" id="send-otp-btn" class="wpcf7-submit">Send OTP</button>`
+4. Add the "Send" button: `<button type="button" class="send-otp-btn wpcf7-submit">Send OTP</button>`
+5. Add the OTP field: `[text* email-otp placeholder "Enter OTP"]`
 6. Save your form.
 
 == Frequently Asked Questions ==
@@ -48,4 +48,6 @@ Bots can easily fill out forms, but they usually cannot access a private email i
 = 1.0.0 =
 * Initial release.
 * Implemented self hosted sever or SMTP-based OTP delivery via wp_mail() function.
-* Added anti-spam and bot blocking verification.
+* Block Bots & Spam:** Ensure every submission comes from a person with a valid, accessible email address.
+* Rate Limiting:** Built-in protection to prevent OTP request abuse (3 attempts per 5 minutes per IP).
+* Can be used in multiple forms on the same page

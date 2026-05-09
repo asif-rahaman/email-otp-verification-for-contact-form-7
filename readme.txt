@@ -23,7 +23,7 @@ This plugin is built with a **"Your Server, Your Rules"** philosophy. It sends O
 *   **Cost-Effective:** Zero cost to send OTPs—it uses your existing server or SMTP setup.
 *   **Privacy First:** No data is sent to external verification APIs; everything stays on your server.
 *   **Smart Detection:** Automatically finds the email field in your Contact Form 7 forms.
-*   **Rate Limiting:** Built-in protection to prevent OTP request abuse (3 attempts per 5 minutes per IP).
+*   **Security-First Rate Limiting:** Built-in protection to prevent OTP request abuse by limiting users to 3 attempts per 5 minutes per IP address.
 *   **Lightweight:** Minimal footprint to ensure your site remains fast and passes Core Web Vitals.
 
 == Installation ==
@@ -38,16 +38,18 @@ This plugin is built with a **"Your Server, Your Rules"** philosophy. It sends O
 == Frequently Asked Questions ==
 
 = Is this really free to use? =
-Yes. As long as your server can send emails (or you use an SMTP plugin), there is no cost to send OTP codes through this plugin.
+Yes. As long as your server can send emails, there is no cost to send OTP codes through this plugin.
 
-= How does it block bots? =
-Bots can easily fill out forms, but they usually cannot access a private email inbox to retrieve a unique, time-sensitive code. By making the OTP field required, only real users can complete the submission.
+= How does the rate limiting work? =
+To protect your server from being used for mail bombing or automated attacks, the plugin tracks the user's IP address and limits them to 3 OTP requests within a 5-minute window.
+
+= Does it work with "WP Mail SMTP"? =
+Absolutely. It routes emails through whatever SMTP provider you have configured in your WordPress dashboard.
 
 == Changelog ==
 
 = 1.0.0 =
 * Initial release.
-* Implemented self hosted sever or SMTP-based OTP delivery via wp_mail() function.
-* Block Bots & Spam:** Ensure every submission comes from a person with a valid, accessible email address.
-* Rate Limiting:** Built-in protection to prevent OTP request abuse (3 attempts per 5 minutes per IP).
-* Can be used in multiple forms on the same page
+* Implemented SMTP-based OTP delivery via wp_mail().
+* Added IP-based rate limiting for security.
+* Added support for multiple forms on a single page.

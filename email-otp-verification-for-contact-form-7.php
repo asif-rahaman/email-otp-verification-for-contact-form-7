@@ -24,11 +24,7 @@ class EOV_CF7_Email_OTP_Verification {
     private $limit_count = 3;
     private $limit_time  = 300; 
 
-    public function __construct() {
-        // WordPress 4.6+ handles translation loading automatically for .org plugins
-        // but keeping it here for local development and non-.org installs.
-        add_action('init', [$this, 'eov_cf7_load_textdomain']);
-        
+    public function __construct() {       
         add_action('wp_enqueue_scripts', [$this, 'eov_cf7_enqueue_assets']);
         add_action('wp_ajax_send_cf7_otp', [$this, 'eov_cf7_handle_send_otp']);
         add_action('wp_ajax_nopriv_send_cf7_otp', [$this, 'eov_cf7_handle_send_otp']);
@@ -36,13 +32,6 @@ class EOV_CF7_Email_OTP_Verification {
         add_filter('wpcf7_validate_text*', [$this, 'eov_cf7_validate_otp'], 20, 2);
         add_filter('wpcf7_validate_text', [$this, 'eov_cf7_validate_otp'], 20, 2);
     }
-    /**
-     * Load plugin textdomain for translations.
-     */
-    public function eov_cf7_load_textdomain() {
-        load_plugin_textdomain('email-otp-verification-for-contact-form-7', false, dirname(plugin_basename(__FILE__)) . '/languages');
-    }
-
     /**
      * Enqueue JS and localized strings.
      */

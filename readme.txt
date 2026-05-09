@@ -32,7 +32,7 @@ This plugin is built with a **"Your Server, Your Rules"** philosophy. It sends O
 2. Activate the plugin through the 'Plugins' menu in WordPress.
 3. Edit your Contact Form 7 form.
 4. Add the OTP field: `[text* email-otp placeholder "Enter OTP"]`
-5. Add the "Send" button: `<button type="button" id="send-otp-btn" class="wpcf7-submit">Send Verification Code</button>`
+5. Add the "Send" button: `<button type="button" id="send-otp-btn" class="wpcf7-submit">Send OTP</button>`
 6. Save your form.
 
 == Frequently Asked Questions ==

@@ -1,11 +1,18 @@
 <?php
 /**
  * Plugin Name: Email OTP Verification for Contact Form 7
- * Description: Adds OTP email verification to Contact Form 7 using the site's default SMTP. No third-party APIs required.
+ * Plugin URI:        https://example.com/plugins/the-basics/
+ * Description: Adds OTP email verification to Contact Form 7 using the site's default mail function or SMTP. No third-party APIs required.
  * Version: 0.0.1
+ * Requires at least: 5.2
+ * Requires PHP:      7.2
  * Author: Asif Rahaman
+ * Author URI:        https://portfolio.asif.rocks
+ * License:           GPL v2 or later
+ * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain: email-otp-verification-for-contact-form-7
  * Domain Path: /languages
+ * Requires Plugins:  contact-form-7
  */
 
 if (!defined('ABSPATH')) exit;
@@ -40,23 +47,19 @@ class EOV_CF7_Email_OTP_Verification {
      * Enqueue JS and localized strings.
      */
     public function eov_cf7_enqueue_assets() {
-        wp_enqueue_script('eov-cf7-otp-js', plugin_dir_url(__FILE__) . 'assets/otp-handler.js', ['jquery'], '1.0.0', true);
+        wp_enqueue_script('eov-cf7-otp-js', plugin_dir_url(__FILE__) . 'assets/otp-handler.js', ['jquery'], '1.0.1', true);
         
         wp_localize_script('eov-cf7-otp-js', 'eov_cf7_obj', [
-            'ajax_url'    => admin_url('admin-ajax.php'),
-            'nonce'       => wp_create_nonce('eov_cf7_otp_nonce'),
-            'msg_sending' => __('Sending...', $this->domain),
-            'msg_wait'    => __('Wait', $this->domain),
-            'msg_resend'  => __('Resend OTP', $this->domain),
+            'ajax_url'          => admin_url('admin-ajax.php'),
+            'nonce'             => wp_create_nonce('eov_cf7_otp_nonce'),
+            'msg_sending'       => __('Sending...', $this->domain),
+            'msg_wait'          => __('Wait', $this->domain),
+            'msg_resend'        => __('Resend OTP', $this->domain),
             'msg_invalid_email' => __('Please enter a valid email address.', $this->domain),
         ]);
 
         $custom_css = "
-            #cf7-otp-response {
-                display: block;
-                padding: 5px 0;
-                animation: eovFadeIn 0.5s;
-            }
+            .cf7-otp-response { display: block; padding: 5px 0; animation: eovFadeIn 0.5s; }
             @keyframes eovFadeIn { from { opacity: 0; } to { opacity: 1; } }";
             
         wp_add_inline_style('eov-cf7-otp-js', $custom_css);

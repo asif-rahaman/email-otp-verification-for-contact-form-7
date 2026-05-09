@@ -85,13 +85,13 @@ class EOV_CF7_Email_OTP_Verification {
 
         // Prepare Email
         /* translators: %s: Site Name */
-        $subject = sprintf(__('[%s] Your Verification Code', 'email-otp-verification-for-contact-form-7'), get_bloginfo('name'));
+        $subject = sprintf(__('[%s] Your Verification OTP Code', 'email-otp-verification-for-contact-form-7'), get_bloginfo('name'));
         /* translators: %s: OTP Code */
-        $message = sprintf(__('Your verification code is: %s', 'email-otp-verification-for-contact-form-7'), $otp) . "\r\n\r\n" . __('This code will expire in 5 minutes.', 'email-otp-verification-for-contact-form-7');
+        $message = sprintf(__('Your verification OTP code is: %s', 'email-otp-verification-for-contact-form-7'), $otp) . "\r\n\r\n" . __('This OTP code will expire in 5 minutes.', 'email-otp-verification-for-contact-form-7');
         
         if (wp_mail($email, $subject, $message)) {
             set_transient($rate_key, $attempts + 1, $this->limit_time);
-            wp_send_json_success(__('Verification code sent successfully.', 'email-otp-verification-for-contact-form-7'));
+            wp_send_json_success(__('Verification OTP code sent successfully.', 'email-otp-verification-for-contact-form-7'));
         } else {
             wp_send_json_error(__('Email delivery failed. Check your SMTP settings.', 'email-otp-verification-for-contact-form-7'));
         }
